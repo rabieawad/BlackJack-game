@@ -1,0 +1,401 @@
+{
+	"info": {
+		"_postman_id": "23e65cbf-71a4-4f45-9d3d-31dc7caceb2e",
+		"name": "RestTesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11321224"
+	},
+	"item": [
+		{
+			"name": "Start Game Request Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bet\" : 10,\r\n    \"player\" :1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7070/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start Game Request Test Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"respons is ok\", function(){\r",
+							"    pm.response.to.have.be.ok;\r",
+							"})\r",
+							"\r",
+							"pm.test(\"respons is json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							" pm.test(\"Response includes specified elements\", function () {\r",
+							"    let response = pm.response.json();\r",
+							"\r",
+							"    pm.expect(response).to.have.ownProperty(\"Dealer\"); \r",
+							"        pm.expect(response).to.have.ownProperty(\"player1\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"player2\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1won\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2won\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1lost\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2lost\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1equal\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2equal\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1sum\"); \r",
+							"     pm.expect(response).to.have.ownProperty(\"dealersum\");\r",
+							"    pm.expect(response).to.have.ownProperty(\"p2sum\"); });\r",
+							"  pm.test(\"validify response\", function () {\r",
+							"      let sta = pm.response.json();\r",
+							"      if(sta.p1won)\r",
+							"         pm.expect(sta.p1sum).to.equal(21);\r",
+							"      if(sta.p1lost)\r",
+							"         pm.expect(sta.p1sum).to.greaterThan(21);\r",
+							"\r",
+							"       if(sta.p2won)\r",
+							"         pm.expect(sta.p2sum).to.equal(21);\r",
+							"      if(sta.p2lost)\r",
+							"         pm.expect(sta.p2sum).to.greaterThan(21);\r",
+							"    \r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bet\": 10,\r\n    \"player\" : 2\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7070/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hit Request test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"respons is ok\", function(){\r",
+							"    pm.response.to.have.be.ok;\r",
+							"})\r",
+							"\r",
+							"pm.test(\"respons is json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							" pm.test(\"Response includes specified elements\", function () {\r",
+							"    let response = pm.response.json();\r",
+							"\r",
+							"    pm.expect(response).to.have.ownProperty(\"Dealer\"); \r",
+							"        pm.expect(response).to.have.ownProperty(\"player1\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"player2\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1won\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2won\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1lost\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2lost\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1equal\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2equal\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1sum\"); \r",
+							"     pm.expect(response).to.have.ownProperty(\"dealersum\");\r",
+							"    pm.expect(response).to.have.ownProperty(\"p2sum\"); });\r",
+							"  pm.test(\"validify response\", function () {\r",
+							"      let sta = pm.response.json();\r",
+							"      if(sta.p1won)\r",
+							"         pm.expect(sta.p1sum).to.equal(21);\r",
+							"      if(sta.p1lost)\r",
+							"         pm.expect(sta.p1sum).to.greaterThan(21);\r",
+							"\r",
+							"       if(sta.p2won)\r",
+							"         pm.expect(sta.p2sum).to.equal(21);\r",
+							"      if(sta.p2lost)\r",
+							"         pm.expect(sta.p2sum).to.greaterThan(21);\r",
+							"    \r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"player\" :2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7070/hit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"hit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stand request test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"respons is ok\", function(){\r",
+							"    pm.response.to.have.be.ok;\r",
+							"})\r",
+							"\r",
+							"pm.test(\"respons is json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							" pm.test(\"Response includes specified elements\", function () {\r",
+							"    let response = pm.response.json();\r",
+							"\r",
+							"    pm.expect(response).to.have.ownProperty(\"Dealer\"); \r",
+							"        pm.expect(response).to.have.ownProperty(\"player1\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"player2\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1won\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2won\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1lost\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2lost\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1equal\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2equal\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1sum\"); \r",
+							"     pm.expect(response).to.have.ownProperty(\"dealersum\");\r",
+							"    pm.expect(response).to.have.ownProperty(\"p2sum\"); });\r",
+							"  pm.test(\"validify response\", function () {\r",
+							"      let sta = pm.response.json();\r",
+							"      if(sta.p1won)\r",
+							"        (pm.expect(sta.p1sum).to.equal(21) || pm.expect(sta.p1sum).to.greaterThan(sta.dealersum) || pm.expect(sta.dealersum).to.greaterThan(21));    \r",
+							"         if(sta.p1lost)\r",
+							"         (pm.expect(sta.p1sum).to.greaterThan(21) || pm.expect(sta.p1sum).to.greaterThan(sta.dealersum));\r",
+							"\r",
+							"       if(sta.p2won)\r",
+							"          (pm.expect(sta.p2sum).to.equal(21) || pm.expect(sta.p2sum).to.greaterThan(sta.dealersum) || pm.expect(sta.dealersum).to.greaterThan(21));\r",
+							"      if(sta.p2lost)\r",
+							"         (pm.expect(sta.p2sum).to.greaterThan(21) || pm.expect(sta.p2sum).to.greaterThan(sta.dealersum));\r",
+							"    \r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"player\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7070/stand",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"stand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stand request test Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"respons is ok\", function(){\r",
+							"    pm.response.to.have.be.ok;\r",
+							"})\r",
+							"\r",
+							"pm.test(\"respons is json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							" pm.test(\"Response includes specified elements\", function () {\r",
+							"    let response = pm.response.json();\r",
+							"\r",
+							"    pm.expect(response).to.have.ownProperty(\"Dealer\"); \r",
+							"        pm.expect(response).to.have.ownProperty(\"player1\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"player2\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1won\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2won\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1lost\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2lost\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1equal\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p2equal\"); \r",
+							"    pm.expect(response).to.have.ownProperty(\"p1sum\"); \r",
+							"     pm.expect(response).to.have.ownProperty(\"dealersum\");\r",
+							"    pm.expect(response).to.have.ownProperty(\"p2sum\"); });\r",
+							"  pm.test(\"validify response\", function () {\r",
+							"      let sta = pm.response.json();\r",
+							"      if(sta.p1won)\r",
+							"        (pm.expect(sta.p1sum).to.equal(21) || pm.expect(sta.p1sum).to.greaterThan(sta.dealersum) || pm.expect(sta.dealersum).to.greaterThan(21));    \r",
+							"      if(sta.p1lost)\r",
+							"           (pm.expect(sta.p1sum).to.greaterThan(21) || pm.expect(sta.p1sum).to.greaterThan(sta.dealersum));\r",
+							"\r",
+							"       if(sta.p2won)\r",
+							"          (pm.expect(sta.p2sum).to.equal(21) || pm.expect(sta.p2sum).to.greaterThan(sta.dealersum) || pm.expect(sta.dealersum).to.greaterThan(21));\r",
+							"      if(sta.p2lost)\r",
+							"         (pm.expect(sta.p2sum).to.greaterThan(21) || pm.expect(sta.p2sum).to.greaterThan(sta.dealersum));\r",
+							"    \r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"player\":2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7070/stand",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"stand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Status Test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " pm.test(\"Status 200\", function(){\r\n    pm.response.to.have.status(200);\r\n})\r\npm.test(\"respons is ok\", function(){\r\n    pm.response.to.have.be.ok;\r\n})\r\n\r\npm.test(\"respons is json\", function(){\r\n    pm.response.to.be.json;\r\n})\r\n\r\npm.test(\"Response time is less than 200ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(200);\r\n});\r\n\r\n pm.test(\"Response includes specified elements\", function () {\r\n    let response = pm.response.json();\r\n\r\n    pm.expect(response).to.have.ownProperty(\"Dealer\"); \r\n        pm.expect(response).to.have.ownProperty(\"player1\"); \r\n    pm.expect(response).to.have.ownProperty(\"player2\"); \r\n    pm.expect(response).to.have.ownProperty(\"p1won\"); \r\n    pm.expect(response).to.have.ownProperty(\"p2won\"); \r\n    pm.expect(response).to.have.ownProperty(\"p1lost\"); \r\n    pm.expect(response).to.have.ownProperty(\"p2lost\"); \r\n    pm.expect(response).to.have.ownProperty(\"p1equal\"); \r\n    pm.expect(response).to.have.ownProperty(\"p2equal\"); \r\n    pm.expect(response).to.have.ownProperty(\"p1sum\"); \r\n    pm.expect(response).to.have.ownProperty(\"p2sum\");\r\n});",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7070/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
