@@ -3,7 +3,7 @@ javalinServer
 
 ## Description
 
-Server providing Trading serves that allows signed up Users to buy various goods
+Server for blackjack game
 ## Authors
 
 Rabie Alawad
